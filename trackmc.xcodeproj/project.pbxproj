@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03B1AE981AEFC26200A476FA /* Exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B1AE961AEFC26200A476FA /* Exceptions.cpp */; };
 		03BEF3A31AEEDF2300A2A4F3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3A21AEEDF2300A2A4F3 /* main.cpp */; };
 		03BEF3AB1AEEDF8B00A2A4F3 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */; };
 		03BEF3AE1AEEE0AF00A2A4F3 /* Vector3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3AC1AEEE0AF00A2A4F3 /* Vector3D.cpp */; };
@@ -25,6 +26,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03B1AE951AEFBD9400A476FA /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		03B1AE961AEFC26200A476FA /* Exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exceptions.cpp; sourceTree = "<group>"; };
+		03B1AE971AEFC26200A476FA /* Exceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exceptions.h; sourceTree = "<group>"; };
 		03BEF39F1AEEDF2300A2A4F3 /* trackmc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = trackmc; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BEF3A21AEEDF2300A2A4F3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
@@ -64,8 +68,11 @@
 			isa = PBXGroup;
 			children = (
 				03BEF3A21AEEDF2300A2A4F3 /* main.cpp */,
-				03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */,
+				03B1AE961AEFC26200A476FA /* Exceptions.cpp */,
+				03B1AE971AEFC26200A476FA /* Exceptions.h */,
+				03B1AE951AEFBD9400A476FA /* Constants.h */,
 				03BEF3AA1AEEDF8B00A2A4F3 /* Particle.h */,
+				03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */,
 				03BEF3AC1AEEE0AF00A2A4F3 /* Vector3D.cpp */,
 				03BEF3AD1AEEE0AF00A2A4F3 /* Vector3D.h */,
 			);
@@ -129,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BEF3A31AEEDF2300A2A4F3 /* main.cpp in Sources */,
+				03B1AE981AEFC26200A476FA /* Exceptions.cpp in Sources */,
 				03BEF3AB1AEEDF8B00A2A4F3 /* Particle.cpp in Sources */,
 				03BEF3AE1AEEE0AF00A2A4F3 /* Vector3D.cpp in Sources */,
 			);
@@ -247,6 +255,7 @@
 				03BEF3A81AEEDF2300A2A4F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

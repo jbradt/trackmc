@@ -28,6 +28,8 @@ public:
     double dot(const Vector3D& other) const;
     Vector3D cross(const Vector3D& other) const;
     
+    double norm() const;
+    
     double x {0};
     double y {0};
     double z {0};

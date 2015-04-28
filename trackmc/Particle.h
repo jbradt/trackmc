@@ -9,8 +9,11 @@
 #ifndef __trackmc__Particle__
 #define __trackmc__Particle__
 
-#include "Vector3D.h"
 #include <cmath>
+
+#include "Vector3D.h"
+#include "Constants.h"
+#include "Exceptions.h"
 
 class Particle {
 public:
@@ -21,8 +24,8 @@ public:
     Vector3D get_momentum() const;
     void set_momentum(Vector3D& value);
     
-    double get_mass() const;
-    double get_si_mass() const;
+    const double get_mass() const;
+    const double get_si_mass() const;
     
     Vector3D get_velocity() const;
     void set_velocity(Vector3D& value);
@@ -36,6 +39,10 @@ public:
     double polar {0};
     double azimuth {0};
     Vector3D position {0, 0, 0};
+    
+private:
+    static double find_beta(const double energy, const double mass);
+    static double find_gamma(const Vector3D& velocity);
 };
 
 #endif /* defined(__trackmc__Particle__) */

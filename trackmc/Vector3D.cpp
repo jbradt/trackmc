@@ -67,3 +67,8 @@ Vector3D Vector3D::cross(const Vector3D& other) const
     result.z = x * other.y - y * other.x;
     return result;
 }
+
+double Vector3D::norm() const
+{
+    return sqrt(x*x + y*y + z*z);
+}
