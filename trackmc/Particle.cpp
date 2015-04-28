@@ -29,7 +29,7 @@ Vector3D Particle::get_momentum() const
 
 void Particle::set_momentum(Vector3D &value)
 {
-    auto mom_mag = value.x*value.x + value.y*value.y + value.z*value.z;
+    auto mom_mag = sqrt(value.x*value.x + value.y*value.y + value.z*value.z);
     auto mass = get_mass();
     energy = sqrt(mom_mag*mom_mag + mass*mass) - mass;
     polar = atan2(sqrt(value.x*value.x + value.y*value.y), value.z);
@@ -48,16 +48,8 @@ const double Particle::get_si_mass() const
 
 Vector3D Particle::get_velocity() const
 {
-    auto mom_si = get_momentum() * 1e6 / Constants::c_lgt * Constants::e_chg;
+    Vector3D mom_si = get_momentum() * 1e6 / Constants::c_lgt * Constants::e_chg;
     return mom_si / (get_gamma() * get_si_mass());
-}
-
-void Particle::set_velocity(Vector3D &value)
-{
-    auto gamma = find_gamma(value);
-    auto mom_si = value * gamma * get_si_mass();
-    auto mom = mom_si / Constants::e_chg * Constants::c_lgt * 1e-6;
-    set_momentum(mom);
 }
 
 double Particle::get_beta() const
@@ -67,13 +59,21 @@ double Particle::get_beta() const
 
 double Particle::get_gamma() const
 {
-    return find_gamma(get_velocity());
+    auto beta = get_beta();
+    auto denom = sqrt(1 - beta*beta);
+    
+    if (denom == 0) {
+        return 1e100;
+    }
+    else {
+        return 1 / denom;
+    }
 }
 
 double Particle::find_beta(const double energy, const double mass)
 {
-    assert(mass > 0.0);
-    assert(energy > 0.0);
+    assert(mass >= 0.0);
+    assert(energy >= 0.0);
     assert(mass + energy > 0);
     
     auto beta = sqrt(energy * (energy + 2*mass)) / (energy + mass);
@@ -89,5 +89,5 @@ double Particle::find_gamma(const Vector3D &velocity)
     if (vmag > Constants::c_lgt) {
         throw Exceptions::SpeedOfLightError(vmag);
     }
-    return 1 / sqrt(1 - vmag*vmag / Constants::c_lgt*Constants::c_lgt);
+    return 1 / sqrt(1 - vmag*vmag / (Constants::c_lgt*Constants::c_lgt));
 }

@@ -68,6 +68,22 @@ Vector3D Vector3D::cross(const Vector3D& other) const
     return result;
 }
 
+const bool Vector3D::operator==(const Vector3D &other) const
+{
+    if (x == other.x and y == other.y and z == other.z) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+std::ostream& operator<<(std::ostream& os, const Vector3D& vec)
+{
+    os << "[" << vec.x << ", " << vec.y << ", " << vec.z << "]";
+    return os;
+}
+
 double Vector3D::norm() const
 {
     return sqrt(x*x + y*y + z*z);

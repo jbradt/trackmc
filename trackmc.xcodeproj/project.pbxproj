@@ -8,12 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		03B1AE981AEFC26200A476FA /* Exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B1AE961AEFC26200A476FA /* Exceptions.cpp */; };
+		03B1AEA81AEFE10700A476FA /* catch_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B1AE9B1AEFE06C00A476FA /* catch_main.cpp */; };
+		03B1AEAA1AEFE1BC00A476FA /* Particle_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B1AEA91AEFE1BC00A476FA /* Particle_tests.cpp */; };
+		03B1AEAB1AEFE38800A476FA /* Vector3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3AC1AEEE0AF00A2A4F3 /* Vector3D.cpp */; };
+		03B1AEAC1AEFE38F00A476FA /* Exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B1AE961AEFC26200A476FA /* Exceptions.cpp */; };
+		03B1AEAD1AEFE39100A476FA /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */; };
 		03BEF3A31AEEDF2300A2A4F3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3A21AEEDF2300A2A4F3 /* main.cpp */; };
 		03BEF3AB1AEEDF8B00A2A4F3 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */; };
 		03BEF3AE1AEEE0AF00A2A4F3 /* Vector3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3AC1AEEE0AF00A2A4F3 /* Vector3D.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		03B1AE9F1AEFE0F000A476FA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		03BEF39D1AEEDF2300A2A4F3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,6 +43,10 @@
 		03B1AE951AEFBD9400A476FA /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		03B1AE961AEFC26200A476FA /* Exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exceptions.cpp; sourceTree = "<group>"; };
 		03B1AE971AEFC26200A476FA /* Exceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exceptions.h; sourceTree = "<group>"; };
+		03B1AE9A1AEFDFB200A476FA /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = ../../../Downloads/catch.hpp; sourceTree = "<group>"; };
+		03B1AE9B1AEFE06C00A476FA /* catch_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = catch_main.cpp; sourceTree = "<group>"; };
+		03B1AEA11AEFE0F000A476FA /* trackmc_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = trackmc_tests; sourceTree = BUILT_PRODUCTS_DIR; };
+		03B1AEA91AEFE1BC00A476FA /* Particle_tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle_tests.cpp; sourceTree = "<group>"; };
 		03BEF39F1AEEDF2300A2A4F3 /* trackmc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = trackmc; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BEF3A21AEEDF2300A2A4F3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
@@ -38,6 +56,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		03B1AE9E1AEFE0F000A476FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03BEF39C1AEEDF2300A2A4F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,10 +73,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03B1AE991AEFDF9700A476FA /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				03B1AE9A1AEFDFB200A476FA /* catch.hpp */,
+				03B1AE9B1AEFE06C00A476FA /* catch_main.cpp */,
+				03B1AEA91AEFE1BC00A476FA /* Particle_tests.cpp */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 		03BEF3961AEEDF2300A2A4F3 = {
 			isa = PBXGroup;
 			children = (
 				03BEF3A11AEEDF2300A2A4F3 /* trackmc */,
+				03B1AE991AEFDF9700A476FA /* Tests */,
 				03BEF3A01AEEDF2300A2A4F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				03BEF39F1AEEDF2300A2A4F3 /* trackmc */,
+				03B1AEA11AEFE0F000A476FA /* trackmc_tests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +119,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		03B1AEA01AEFE0F000A476FA /* trackmc_tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03B1AEA51AEFE0F000A476FA /* Build configuration list for PBXNativeTarget "trackmc_tests" */;
+			buildPhases = (
+				03B1AE9D1AEFE0F000A476FA /* Sources */,
+				03B1AE9E1AEFE0F000A476FA /* Frameworks */,
+				03B1AE9F1AEFE0F000A476FA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = trackmc_tests;
+			productName = trackmc_tests;
+			productReference = 03B1AEA11AEFE0F000A476FA /* trackmc_tests */;
+			productType = "com.apple.product-type.tool";
+		};
 		03BEF39E1AEEDF2300A2A4F3 /* trackmc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03BEF3A61AEEDF2300A2A4F3 /* Build configuration list for PBXNativeTarget "trackmc" */;
@@ -108,6 +162,9 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = NSCL;
 				TargetAttributes = {
+					03B1AEA01AEFE0F000A476FA = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
 					03BEF39E1AEEDF2300A2A4F3 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -126,11 +183,24 @@
 			projectRoot = "";
 			targets = (
 				03BEF39E1AEEDF2300A2A4F3 /* trackmc */,
+				03B1AEA01AEFE0F000A476FA /* trackmc_tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		03B1AE9D1AEFE0F000A476FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B1AEA81AEFE10700A476FA /* catch_main.cpp in Sources */,
+				03B1AEAD1AEFE39100A476FA /* Particle.cpp in Sources */,
+				03B1AEAA1AEFE1BC00A476FA /* Particle_tests.cpp in Sources */,
+				03B1AEAC1AEFE38F00A476FA /* Exceptions.cpp in Sources */,
+				03B1AEAB1AEFE38800A476FA /* Vector3D.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03BEF39B1AEEDF2300A2A4F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +215,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		03B1AEA61AEFE0F000A476FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		03B1AEA71AEFE0F000A476FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		03BEF3A41AEEDF2300A2A4F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -239,6 +327,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		03B1AEA51AEFE0F000A476FA /* Build configuration list for PBXNativeTarget "trackmc_tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B1AEA61AEFE0F000A476FA /* Debug */,
+				03B1AEA71AEFE0F000A476FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		03BEF39A1AEEDF2300A2A4F3 /* Build configuration list for PBXProject "trackmc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

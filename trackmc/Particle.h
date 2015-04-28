@@ -28,7 +28,6 @@ public:
     const double get_si_mass() const;
     
     Vector3D get_velocity() const;
-    void set_velocity(Vector3D& value);
     
     double get_beta() const;
     double get_gamma() const;

@@ -27,6 +27,10 @@ public:
     
     double dot(const Vector3D& other) const;
     Vector3D cross(const Vector3D& other) const;
+
+    const bool operator==(const Vector3D& other) const;
+    
+    friend std::ostream& operator<<(std::ostream& os, const Vector3D& vec);
     
     double norm() const;
     
