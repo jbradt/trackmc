@@ -48,9 +48,9 @@ Vector3D Vector3D::operator/(const double scalar) const
 {
     assert(scalar != 0);
     Vector3D result {0, 0, 0};
-    result.x = x * scalar;
-    result.y = y * scalar;
-    result.z = z * scalar;
+    result.x = x / scalar;
+    result.y = y / scalar;
+    result.z = z / scalar;
     return result;
 }
 

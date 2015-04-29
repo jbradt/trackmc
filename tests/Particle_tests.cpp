@@ -77,13 +77,13 @@ SCENARIO("Particle class is working", "[Particle]") {
                 REQUIRE(pt.get_gamma() == 1);
             }
         }
-        WHEN("momentum is halved") {
+        WHEN("momentum is doubled") {
             auto old_mom = pt.get_momentum();
-            auto new_mom = old_mom / 2;
+            auto new_mom = old_mom * 2;
             auto new_mom_mag = new_mom.norm();
             pt.set_momentum(new_mom);
             
-            THEN("new momentum is half the old value") {
+            THEN("new momentum is twice the old value") {
                 REQUIRE(pt.get_momentum() == new_mom);
             }
             AND_THEN("energy changes") {

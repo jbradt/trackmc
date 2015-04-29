@@ -18,4 +18,4 @@ set(TEST_MAIN_FILE tests/catch_main.cpp)
 include_directories(trackmc)
 
 add_executable(trackmc ${SOURCE_FILES} ${MAIN_FILE})
-add_executable(trackmc_tests ${SOURCE_FILES} ${TEST_FILES} ${TEST_MAIN_FILE})
+add_executable(trackmc_tests ${SOURCE_FILES} ${TEST_FILES} ${TEST_MAIN_FILE} tests/Vector3D_tests.cpp)
