@@ -13,6 +13,8 @@
 		03B1AEAB1AEFE38800A476FA /* Vector3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3AC1AEEE0AF00A2A4F3 /* Vector3D.cpp */; };
 		03B1AEAC1AEFE38F00A476FA /* Exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B1AE961AEFC26200A476FA /* Exceptions.cpp */; };
 		03B1AEAD1AEFE39100A476FA /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */; };
+		03B1AEB01AF00CFB00A476FA /* Gas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B1AEAE1AF00CFB00A476FA /* Gas.cpp */; };
+		03B1AEB11AF00CFB00A476FA /* Gas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B1AEAE1AF00CFB00A476FA /* Gas.cpp */; };
 		03BEF3A31AEEDF2300A2A4F3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3A21AEEDF2300A2A4F3 /* main.cpp */; };
 		03BEF3AB1AEEDF8B00A2A4F3 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */; };
 		03BEF3AE1AEEE0AF00A2A4F3 /* Vector3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BEF3AC1AEEE0AF00A2A4F3 /* Vector3D.cpp */; };
@@ -47,6 +49,8 @@
 		03B1AE9B1AEFE06C00A476FA /* catch_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = catch_main.cpp; sourceTree = "<group>"; };
 		03B1AEA11AEFE0F000A476FA /* trackmc_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = trackmc_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		03B1AEA91AEFE1BC00A476FA /* Particle_tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle_tests.cpp; sourceTree = "<group>"; };
+		03B1AEAE1AF00CFB00A476FA /* Gas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gas.cpp; sourceTree = "<group>"; };
+		03B1AEAF1AF00CFB00A476FA /* Gas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gas.h; sourceTree = "<group>"; };
 		03BEF39F1AEEDF2300A2A4F3 /* trackmc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = trackmc; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BEF3A21AEEDF2300A2A4F3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				03BEF3A91AEEDF8B00A2A4F3 /* Particle.cpp */,
 				03BEF3AC1AEEE0AF00A2A4F3 /* Vector3D.cpp */,
 				03BEF3AD1AEEE0AF00A2A4F3 /* Vector3D.h */,
+				03B1AEAE1AF00CFB00A476FA /* Gas.cpp */,
+				03B1AEAF1AF00CFB00A476FA /* Gas.h */,
 			);
 			path = trackmc;
 			sourceTree = "<group>";
@@ -196,6 +202,7 @@
 				03B1AEA81AEFE10700A476FA /* catch_main.cpp in Sources */,
 				03B1AEAD1AEFE39100A476FA /* Particle.cpp in Sources */,
 				03B1AEAA1AEFE1BC00A476FA /* Particle_tests.cpp in Sources */,
+				03B1AEB11AF00CFB00A476FA /* Gas.cpp in Sources */,
 				03B1AEAC1AEFE38F00A476FA /* Exceptions.cpp in Sources */,
 				03B1AEAB1AEFE38800A476FA /* Vector3D.cpp in Sources */,
 			);
@@ -207,6 +214,7 @@
 			files = (
 				03BEF3A31AEEDF2300A2A4F3 /* main.cpp in Sources */,
 				03B1AE981AEFC26200A476FA /* Exceptions.cpp in Sources */,
+				03B1AEB01AF00CFB00A476FA /* Gas.cpp in Sources */,
 				03BEF3AB1AEEDF8B00A2A4F3 /* Particle.cpp in Sources */,
 				03BEF3AE1AEEE0AF00A2A4F3 /* Vector3D.cpp in Sources */,
 			);
