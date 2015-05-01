@@ -10,7 +10,9 @@ set(SOURCE_FILES
     trackmc/Vector3D.cpp)
 
 set(TEST_FILES
-    tests/Particle_tests.cpp)
+    tests/Particle_tests.cpp
+    tests/Vector3D_tests.cpp
+    tests/InterpolatedGas_tests.cpp)
 
 set(MAIN_FILE trackmc/main.cpp)
 set(TEST_MAIN_FILE tests/catch_main.cpp)
@@ -18,4 +20,4 @@ set(TEST_MAIN_FILE tests/catch_main.cpp)
 include_directories(trackmc)
 
 add_executable(trackmc ${SOURCE_FILES} ${MAIN_FILE})
-add_executable(trackmc_tests ${SOURCE_FILES} ${TEST_FILES} ${TEST_MAIN_FILE} tests/Vector3D_tests.cpp)
+add_executable(trackmc_tests ${SOURCE_FILES} ${TEST_FILES} ${TEST_MAIN_FILE})

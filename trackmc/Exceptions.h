@@ -12,16 +12,30 @@
 #include <exception>
 #include <string>
 
-namespace Exceptions {
+namespace Exceptions
+{
 
     class SpeedOfLightError : public std::exception
     {
     public:
         SpeedOfLightError(double vmag);
-        virtual const char* what() const noexcept;
-        
+
+        virtual const char *what() const noexcept;
+
     private:
         double vmag;
+    };
+
+    class FileNotFound : public std::exception
+    {
+    public:
+        FileNotFound(const char* name);
+        FileNotFound(std::string& name);
+
+        virtual const char* what() const noexcept;
+
+    private:
+        std::string filename;
     };
 }
 
