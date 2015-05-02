@@ -44,6 +44,11 @@ Vector3D Vector3D::operator*(const double scalar) const
     return result;
 }
 
+Vector3D operator*(const double scalar, const Vector3D& vec)
+{
+    return vec * scalar;
+}
+
 Vector3D Vector3D::operator/(const double scalar) const
 {
     assert(scalar != 0);
