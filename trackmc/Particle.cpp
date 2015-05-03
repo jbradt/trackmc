@@ -91,3 +91,8 @@ double Particle::find_gamma(const Vector3D &velocity)
     }
     return 1 / sqrt(1 - vmag*vmag / (Constants::c_lgt*Constants::c_lgt));
 }
+
+const double Particle::get_charge() const
+{
+    return charge_num * Constants::e_chg;
+}

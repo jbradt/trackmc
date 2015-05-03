@@ -31,6 +31,8 @@ public:
     
     double get_beta() const;
     double get_gamma() const;
+
+    const double get_charge() const;
     
     unsigned int mass_num {0};
     unsigned int charge_num {0};
