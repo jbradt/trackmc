@@ -23,7 +23,7 @@ class InterpolatedGas
 public:
     InterpolatedGas(double pressure, double molar_mass);
 
-    virtual const double energy_loss(const double en);
+    virtual const double energy_loss(const double en) const;
     const double get_pressure() const;
     const double get_molar_mass() const;
     const double get_density() const;

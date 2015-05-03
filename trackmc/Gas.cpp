@@ -14,7 +14,7 @@ InterpolatedGas::InterpolatedGas(double pressure, double molar_mass)
 {
 }
 
-const double InterpolatedGas::energy_loss(const double en)
+const double InterpolatedGas::energy_loss(const double en) const
 {
     // en is in MeV. Divide by the energy step and floor to find
     // the nearest integer point
