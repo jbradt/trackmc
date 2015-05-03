@@ -49,3 +49,73 @@ SCENARIO("TrackSimulator's static functions work correctly")
         }
     }
 }
+
+SCENARIO("A single particle can be tracked")
+{
+    GIVEN("a particle, fields, and gas")
+    {
+        Vector3D pos {0, 0, 0};
+        double azi = Constants::pi / 4;
+        double pol = Constants::pi / 4;
+        double en = 2;
+
+        Particle pt {4, 2, en, pos, azi, pol};
+
+        InterpolatedGas gas {150., 4.};
+        gas.read_file("test_data/helium.dat");
+
+        Vector3D ef {0, 0, 15e3};
+        Vector3D bf {0, 0, 1};
+
+        WHEN("the particle is tracked")
+        {
+            TrackSimulator ts {gas, ef, bf};
+            SimulatedTrack res = ts.track_particle(pt);
+
+            THEN("the result is constructed properly")
+            {
+                auto len = res.position.size();
+                REQUIRE(res.momentum.size() == len);
+                REQUIRE(res.time.size() == len);
+                REQUIRE(res.de.size() == len);
+                REQUIRE(res.azimuth.size() == len);
+                REQUIRE(res.polar.size() == len);
+            }
+        }
+    }
+}
+
+SCENARIO("The next state of a particle is needed")
+{
+    GIVEN("a particle, fields, and gas")
+    {
+        Vector3D pos {0, 0, 0};
+        double azi = Constants::pi / 4;
+        double pol = Constants::pi / 4;
+        double en = 2;
+
+        Particle pt {4, 2, en, pos, azi, pol};
+
+        InterpolatedGas gas {150., 4.};
+        gas.read_file("test_data/helium.dat");
+
+        Vector3D ef {0, 0, 15e3};
+        Vector3D bf {0, 0, 1};
+
+        double tstep = 1e-8;
+
+        TrackSimulator ts {gas, ef, bf};
+
+        WHEN("the energy is zero")
+        {
+            pt.energy = 0;
+
+            THEN("the particle doesn't move")
+            {
+                Particle res = ts.find_next_state(pt, tstep);
+                REQUIRE(pt.position == res.position);
+                REQUIRE(pt.get_momentum() == res.get_momentum());
+            }
+        }
+    }
+}
