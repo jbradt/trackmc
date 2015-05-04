@@ -14,7 +14,7 @@ set(SOURCE_FILES
 set(TEST_FILES
     tests/Particle_tests.cpp
     tests/Vector3D_tests.cpp
-    tests/InterpolatedGas_tests.cpp
+    tests/Gas_tests.cpp
     tests/TrackSimulator_tests.cpp
     tests/InputFile_tests.cpp)
 

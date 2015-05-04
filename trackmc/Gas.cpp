@@ -9,12 +9,13 @@
 #include <fstream>
 #include "Gas.h"
 
-InterpolatedGas::InterpolatedGas(double pressure, double molar_mass)
-: pressure(pressure), molar_mass(molar_mass)
+Gas::Gas(double pressure, std::string file)
+: pressure(pressure)
 {
+    read_file(file);
 }
 
-const double InterpolatedGas::energy_loss(const double en) const
+const double Gas::energy_loss(const double en) const
 {
     // en is in MeV. Divide by the energy step and floor to find
     // the nearest integer point
@@ -23,22 +24,22 @@ const double InterpolatedGas::energy_loss(const double en) const
     return dedx.at(en_idx) * get_density();
 }
 
-const double InterpolatedGas::get_pressure() const
+const double Gas::get_pressure() const
 {
     return pressure;
 }
 
-const double InterpolatedGas::get_molar_mass() const
+const double Gas::get_molar_mass() const
 {
     return molar_mass;
 }
 
-const double InterpolatedGas::get_density() const
+const double Gas::get_density() const
 {
     return pressure / 760. * molar_mass / 24040;
 }
 
-void InterpolatedGas::read_file(std::string filename)
+void Gas::read_file(std::string filename)
 {
     std::ifstream datafile;
     datafile.open(filename, std::ios::in);
@@ -51,6 +52,7 @@ void InterpolatedGas::read_file(std::string filename)
         unsigned int numpts {0};
 
         datafile >> en_step;
+        datafile >> molar_mass;
         datafile >> numpts;
 
         dedx.resize(numpts);

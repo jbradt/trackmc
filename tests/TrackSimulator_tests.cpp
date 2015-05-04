@@ -61,8 +61,7 @@ SCENARIO("A single particle can be tracked")
 
         Particle pt {4, 2, en, pos, azi, pol};
 
-        InterpolatedGas gas {150., 4.};
-        gas.read_file("test_data/helium.dat");
+        Gas gas {150., "test_data/helium.dat"};
 
         Vector3D ef {0, 0, 15e3};
         Vector3D bf {0, 0, 1};
@@ -96,8 +95,7 @@ SCENARIO("The next state of a particle is needed")
 
         Particle pt {4, 2, en, pos, azi, pol};
 
-        InterpolatedGas gas {150., 4.};
-        gas.read_file("test_data/helium.dat");
+        Gas gas {150., "test_data/helium.dat"};
 
         Vector3D ef {0, 0, 15e3};
         Vector3D bf {0, 0, 1};

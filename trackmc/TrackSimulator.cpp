@@ -4,7 +4,7 @@
 
 #include "TrackSimulator.h"
 
-TrackSimulator::TrackSimulator(InterpolatedGas gas, Vector3D ef, Vector3D bf)
+TrackSimulator::TrackSimulator(Gas gas, Vector3D ef, Vector3D bf)
 : gas(gas), ef(ef), bf(bf)
 {}
 

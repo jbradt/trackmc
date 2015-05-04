@@ -6,15 +6,15 @@
 #include "Gas.h"
 #include <string>
 
-SCENARIO("InterpolatedGas class is working")
+SCENARIO("Gas class is working")
 {
-    GIVEN("An InterpolatedGas object and a file name")
+    GIVEN("An Gas object and a file name")
     {
         double press {100.};
-        double molar {4.};
+        double molar {4.0};
 
-        InterpolatedGas gas {press, molar};
         std::string testfilename {"test_data/testgas.dat"};
+        Gas gas {press, testfilename};
 
         REQUIRE(gas.get_pressure() == press);
         REQUIRE(gas.get_molar_mass() == molar);

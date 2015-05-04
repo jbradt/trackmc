@@ -27,7 +27,7 @@ struct SimulatedTrack
 class TrackSimulator
 {
 public:
-    TrackSimulator(InterpolatedGas gas, Vector3D ef, Vector3D bf);
+    TrackSimulator(Gas gas, Vector3D ef, Vector3D bf);
 
     Particle find_next_state(Particle pt, const double tstep) const;
     SimulatedTrack track_particle(Particle pt, const double final_en = 0) const;
@@ -35,7 +35,7 @@ public:
     static Vector3D lorentz_force(const Vector3D& vel, const Vector3D& ef, const Vector3D& bf, const double chg);
 
 private:
-    InterpolatedGas gas;
+    Gas gas;
     Vector3D ef {0, 0, 0};
     Vector3D bf {0, 0, 0};
 };

@@ -18,10 +18,10 @@
 #include "Constants.h"
 #include "Exceptions.h"
 
-class InterpolatedGas
+class Gas
 {
 public:
-    InterpolatedGas(double pressure, double molar_mass);
+    Gas(double pressure, std::string file);
 
     virtual const double energy_loss(const double en) const;
     const double get_pressure() const;
@@ -30,10 +30,12 @@ public:
 
     void read_file(std::string filename);
 
-private:
+protected:
     double pressure {0};
     double molar_mass {0};
     double en_step {0};
+
+private:
     std::vector<double> dedx;
 };
 

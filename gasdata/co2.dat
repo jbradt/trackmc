@@ -1,9 +1,11 @@
 # Energy loss data for alphas in CO2 gas
 # Units are MeV/m
 # First line gives the energy step between points (in MeV)
-# Second line gives number of points in the file
+# Second line gives the molar mass of the gas
+# Third line gives number of points in the file
 # The rest of the file gives points in MeV/m
 0.001
+44.01
 100001
 18587.3153909
 22620.0

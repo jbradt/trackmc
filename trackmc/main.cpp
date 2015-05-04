@@ -31,8 +31,7 @@ int main(int argc, const char * argv[]) {
         return 2;
     }
 
-    InterpolatedGas gas(inputs.get_gas_pressure(), 40.);
-    gas.read_file(inputs.get_gas_path());
+    Gas gas(inputs.get_gas_pressure(), inputs.get_gas_path());
 
     Vector3D ef {inputs.get_efield()};
     Vector3D bf {inputs.get_bfield()};
