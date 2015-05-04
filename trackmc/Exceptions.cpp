@@ -35,3 +35,8 @@ const char* Exceptions::FileNotFound::what() const noexcept
     msg.append(filename);
     return msg.c_str();
 }
+
+const char* Exceptions::InvalidInput::what() const noexcept
+{
+    return "Input file was invalid or missing required keys.";
+}

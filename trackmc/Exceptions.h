@@ -37,6 +37,12 @@ namespace Exceptions
     private:
         std::string filename;
     };
+
+    class InvalidInput : public std::exception
+    {
+    public:
+        virtual const char* what() const noexcept;
+    };
 }
 
 #endif /* defined(__trackmc__Exceptions__) */

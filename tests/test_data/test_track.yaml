@@ -1,0 +1,25 @@
+---
+fields:
+    electric: [0, 0, 15e3]
+    magnetic: [0, 0, 1]
+
+gas:
+    path: "gasdata/helium.dat"
+    pressure: 760
+
+tracks:
+  - projectile:
+        mass: 4
+        charge: 2
+        energy: 2  # per nucleon
+        position: [0, 0, 0]
+        polar: 0.78
+        azimuthal: 0
+    target:
+        mass: 4
+        charge: 2
+    vertex:
+        energy: 1
+...
+
+

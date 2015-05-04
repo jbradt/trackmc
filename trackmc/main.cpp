@@ -13,12 +13,16 @@
 #include "Vector3D.h"
 #include "Exceptions.h"
 #include "Constants.h"
+#include "InputFile.h"
 
 int main(int argc, const char * argv[]) {
     Vector3D pos {0, 0, 0};
     double azi = Constants::pi / 4;
     double pol = Constants::pi / 4;
     double en = 2;
+
+    InputFile inputs {};
+    inputs.parse("tests/test_data/test_track.yaml");
 
     Particle pt {4, 2, en, pos, azi, pol};
 
