@@ -12,12 +12,14 @@
 #include <iostream>
 #include <cmath>
 #include <assert.h>
+#include <vector>
 
 class Vector3D
 {
 public:
     Vector3D(const double x, const double y, const double z);
     Vector3D(const Vector3D& other);
+    Vector3D(const std::vector<double>& svec);
     
     Vector3D operator+(const Vector3D& other) const;
     Vector3D operator-(const Vector3D& other) const;

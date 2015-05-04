@@ -132,3 +132,35 @@ SCENARIO("Vector3D class is working", "[vector3d]")
         }
     }
 }
+
+SCENARIO("A Vector3D needs to be constructed from a std::vector")
+{
+    GIVEN("A std::vector")
+    {
+        std::vector<double> svec {1, 2, 3};
+
+        WHEN("the Vector3D is constructed with this std::vector")
+        {
+            Vector3D vec {svec};
+
+            THEN("it is constructed correctly")
+            {
+                REQUIRE(vec.x == svec[0]);
+                REQUIRE(vec.y == svec[1]);
+                REQUIRE(vec.z == svec[2]);
+            }
+        }
+
+        WHEN("the std::vector does not have three components")
+        {
+            std::vector<double> vec_less {0, 1};
+            std::vector<double> vec_more {0, 1, 2, 3};
+
+            THEN("construction fails")
+            {
+                REQUIRE_THROWS(Vector3D {vec_less});
+                REQUIRE_THROWS(Vector3D {vec_more});
+            }
+        }
+    }
+}

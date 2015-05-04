@@ -40,3 +40,14 @@ const char* Exceptions::InvalidInput::what() const noexcept
 {
     return "Input file was invalid or missing required keys.";
 }
+
+Exceptions::ConstructorFailure::ConstructorFailure(std::string msg)
+: msg(msg)
+{ }
+
+const char *Exceptions::ConstructorFailure::what() const noexcept
+{
+    std::string base {"Constructor failed: "};
+    base.append(msg);
+    return base.c_str();
+}

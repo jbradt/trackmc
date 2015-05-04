@@ -7,6 +7,7 @@
 //
 
 #include "Vector3D.h"
+#include "Exceptions.h"
 
 Vector3D::Vector3D(const double x, const double y, const double z)
 : x(x), y(y), z(z)
@@ -15,6 +16,16 @@ Vector3D::Vector3D(const double x, const double y, const double z)
 Vector3D::Vector3D(const Vector3D& other)
 : x(other.x), y(other.y), z(other.z)
 {}
+
+Vector3D::Vector3D(const std::vector<double>& svec)
+{
+    if (svec.size() != 3) {
+        throw Exceptions::ConstructorFailure("Vector must have 3 elements");
+    }
+    x = svec[0];
+    y = svec[1];
+    z = svec[2];
+}
 
 Vector3D Vector3D::operator+(const Vector3D& other) const
 {

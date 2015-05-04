@@ -43,6 +43,16 @@ namespace Exceptions
     public:
         virtual const char* what() const noexcept;
     };
+
+    class ConstructorFailure : public std::exception
+    {
+    public:
+        ConstructorFailure(std::string msg);
+        virtual const char* what() const noexcept;
+
+    private:
+        std::string msg;
+    };
 }
 
 #endif /* defined(__trackmc__Exceptions__) */
