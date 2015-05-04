@@ -9,6 +9,12 @@
 #include <fstream>
 #include "Gas.h"
 
+
+Gas::Gas()
+: pressure(0), molar_mass(0), en_step(0)
+{
+}
+
 Gas::Gas(double pressure, std::string file)
 : pressure(pressure)
 {
@@ -37,6 +43,16 @@ const double Gas::get_molar_mass() const
 const double Gas::get_density() const
 {
     return pressure / 760. * molar_mass / 24040;
+}
+
+const double Gas::get_max_energy() const
+{
+    return dedx.size() * en_step;
+}
+
+const unsigned long Gas::get_num_pts() const
+{
+    return dedx.size();
 }
 
 void Gas::read_file(std::string filename)

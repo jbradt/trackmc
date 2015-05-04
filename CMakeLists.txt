@@ -6,6 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
 set(SOURCE_FILES
     trackmc/Exceptions.cpp
     trackmc/Gas.cpp
+    trackmc/GasMixture.cpp
     trackmc/Particle.cpp
     trackmc/Vector3D.cpp
     trackmc/TrackSimulator.cpp
@@ -15,6 +16,7 @@ set(TEST_FILES
     tests/Particle_tests.cpp
     tests/Vector3D_tests.cpp
     tests/Gas_tests.cpp
+    tests/GasMixture_tests.cpp
     tests/TrackSimulator_tests.cpp
     tests/InputFile_tests.cpp)
 
