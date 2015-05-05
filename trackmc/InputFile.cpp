@@ -19,9 +19,15 @@ const std::vector<double>& InputFile::get_bfield() const
     return bfield;
 }
 
-const std::string& InputFile::get_gas_path() const
+const std::vector<std::string> InputFile::get_gas_paths() const
 {
-    return gas_path;
+    return gas_paths;
+}
+
+
+const std::vector<double> InputFile::get_gas_proportions() const
+{
+    return gas_proportions;
 }
 
 double InputFile::get_gas_pressure() const
@@ -29,15 +35,16 @@ double InputFile::get_gas_pressure() const
     return gas_pressure;
 }
 
-const std::vector<InputParameters>& InputFile::get_track_parameters() const
+const std::vector<InputEvent>& InputFile::get_events() const
 {
-    return track_parameters;
+    return events;
 }
-
 
 void InputFile::parse(const std::string filename)
 {
     YAML::Node config = YAML::LoadFile(filename);
+
+    // Parse fields section
 
     if (config["fields"]) {
         YAML::Node fields = config["fields"];
@@ -67,105 +74,122 @@ void InputFile::parse(const std::string filename)
         bfield = {0, 0, 0};
     }
 
+    // Parse gas section
+
     if (config["gas"]) {
         YAML::Node gas = config["gas"];
 
-        if (gas["path"] and gas["pressure"]) {
-            gas_path = gas["path"].as<std::string>();
+        if (gas["pressure"]) {
             gas_pressure = gas["pressure"].as<double>();
         }
         else {
-            std::cout << "Must specify gas path and pressure." << std::endl;
+            std::cout << "Must specify gas pressure." << std::endl;
+            throw Exceptions::InvalidInput();
+        }
+
+        gas_paths.clear();
+        gas_proportions.clear();
+
+        if (gas["components"]) {
+            YAML::Node components = gas["components"];
+            for (auto comp : components) {
+                if (comp["path"] and comp["proportion"]) {
+                    gas_paths.push_back(comp["path"].as<std::string>());
+                    gas_proportions.push_back(comp["proportion"].as<double>());
+                }
+                else {
+                    std::cout << "Must specify path and proportion for each gas component"
+                              << std::endl;
+                    throw Exceptions::InvalidInput();
+                }
+            }
+            assert(gas_paths.size() == gas_proportions.size());
+        }
+        else {
+            std::cout << "Must specify at least 1 gas component" << std::endl;
             throw Exceptions::InvalidInput();
         }
     }
+    else {
+        std::cout << "Missing gas section in input file." << std::endl;
+        throw Exceptions::InvalidInput();
+    }
 
-    if (config["tracks"]) {
-        YAML::Node tracks = config["tracks"];
+    // Parse events section
 
-        for (auto track : tracks) {
-            InputParameters params;
+    if (config["events"]) {
+        YAML::Node events_node = config["events"];
 
-            if (track["projectile"]) {
-                YAML::Node proj = track["projectile"];
-                if (proj["mass"] and proj["charge"]) {
-                    params.proj_mass = proj["mass"].as <unsigned int>();
-                    params.proj_charge = proj["charge"].as <unsigned int>();
-                }
-                else {
-                    std::cout << "Must specify projectile charge and mass." << std::endl;
-                    throw Exceptions::InvalidInput();
-                }
+        for (auto event : events_node) {
+            InputEvent evt_in;
 
-                if (proj["energy"]) {
-                    params.proj_energy = proj["energy"].as<double>();
-                }
-                else {
-                    std::cout << "Projectile energy not given. Assuming zero." << std::endl;
-                    params.proj_energy = 0;
-                }
+            if (event["particles"]) {
+                YAML::Node particles = event["particles"];
+                for (auto part : particles) {
+                    ParticleParameters params;
 
-                if (proj["position"]) {
-                    params.proj_position = proj["position"].as<std::vector<double>>();
-                    assert(params.proj_position.size() == 3);
-                }
-                else {
-                    std::cout << "Projectile position not given. Assuming [0, 0, 0]" << std::endl;
-                    params.proj_position = {0, 0, 0};
-                }
+                    if (part["mass"] and part["charge"]) {
+                        params.mass = part["mass"].as <unsigned int>();
+                        params.charge = part["charge"].as <unsigned int>();
+                    }
+                    else {
+                        std::cout << "Must specify particle charge and mass." << std::endl;
+                        throw Exceptions::InvalidInput();
+                    }
 
-                if (proj["polar"]) {
-                    params.proj_polar = proj["polar"].as<double>();
-                }
-                else {
-                    std::cout << "Projectile polar angle not given. Assuming zero." << std::endl;
-                    params.proj_polar = 0;
-                }
+                    if (part["energy"]) {
+                        params.energy = part["energy"].as<double>();
+                    }
+                    else {
+                        std::cout << "Particle energy not given. Assuming zero." << std::endl;
+                        params.energy = 0;
+                    }
 
-                if (proj["azimuthal"]) {
-                    params.proj_azimuth = proj["azimuthal"].as<double>();
+                    if (part["final_energy"]) {
+                        params.final_energy = part["final_energy"].as<double>();
+                    }
+                    else {
+                        std::cout << "Particle final energy not given. Assuming zero." << std::endl;
+                        params.final_energy = 0;
+                    }
+
+                    if (part["position"]) {
+                        params.position = part["position"].as<std::vector<double>>();
+                        assert(params.position.size() == 3);
+                    }
+                    else {
+                        std::cout << "Particle position not given. Assuming [0, 0, 0]" << std::endl;
+                        params.position = {0, 0, 0};
+                    }
+
+                    if (part["polar"]) {
+                        params.polar = part["polar"].as<double>();
+                    }
+                    else {
+                        std::cout << "Particle polar angle not given. Assuming zero." << std::endl;
+                        params.polar = 0;
+                    }
+
+                    if (part["azimuthal"]) {
+                        params.azimuth = part["azimuthal"].as<double>();
+                    }
+                    else {
+                        std::cout << "Particle azimuthal angle not given. Assuming zero." << std::endl;
+                        params.azimuth = 0;
+                    }
+                    evt_in.particles.push_back(std::move(params));
                 }
-                else {
-                    std::cout << "Projectile azimuthal angle not given. Assuming zero." << std::endl;
-                    params.proj_azimuth = 0;
-                }
-            }
+            }  // if particles key exists
             else {
-                std::cout << "Track must have a projectile." << std::endl;
+                std::cout << "No particles were specified." << std::endl;
                 throw Exceptions::InvalidInput();
             }
 
-            if (track["target"] and track["vertex"]) {
-                YAML::Node target = track["target"];
-                YAML::Node vertex = track["vertex"];
-
-                params.is_interaction = true;
-
-                if (target["mass"] and target["charge"]) {
-                    params.target_mass = target["mass"].as<unsigned int>();
-                    params.target_charge = target["charge"].as<unsigned int>();
-                }
-                else {
-                    std::cout << "Target must have mass and charge specified." << std::endl;
-                    throw Exceptions::InvalidInput();
-                }
-
-                if (vertex["energy"]) {
-                    params.vertex_energy = vertex["energy"].as<double>();
-                }
-            }
-            else {
-                params.is_interaction = false;
-                params.target_mass = 0;
-                params.target_charge = 0;
-                params.vertex_energy = 0;
-            }
-
-            track_parameters.push_back(params);
-        }  // for loop over tracks section
-    }  // if tracks key exists
+            this->events.push_back(std::move(evt_in));
+        }  // for loop over events_node section
+    }  // if events key exists
     else {
-        std::cout << "No tracks were specified." << std::endl;
+        std::cout << "No events were specified." << std::endl;
         throw Exceptions::InvalidInput();
     }
 }

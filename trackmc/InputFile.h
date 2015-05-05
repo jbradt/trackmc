@@ -12,18 +12,20 @@
 #include <iostream>
 #include "Exceptions.h"
 
-struct InputParameters
+struct ParticleParameters
 {
-    unsigned int proj_mass;
-    unsigned int proj_charge;
-    double proj_energy;
-    std::vector<double> proj_position;
-    double proj_polar;
-    double proj_azimuth;
-    bool is_interaction;
-    unsigned int target_mass;
-    unsigned int target_charge;
-    double vertex_energy;
+    unsigned int mass;
+    unsigned int charge;
+    double energy;
+    double final_energy;
+    std::vector<double> position;
+    double polar;
+    double azimuth;
+};
+
+struct InputEvent
+{
+    std::vector<ParticleParameters> particles;
 };
 
 class InputFile
@@ -33,9 +35,10 @@ public:
 
     const std::vector<double>& get_efield() const;
     const std::vector<double>& get_bfield() const;
-    const std::string& get_gas_path() const;
+    const std::vector<std::string> get_gas_paths() const;
+    const std::vector<double> get_gas_proportions() const;
     double get_gas_pressure() const;
-    const std::vector<InputParameters>& get_track_parameters() const;
+    const std::vector<InputEvent>& get_events() const;
 
     void parse(const std::string filename);
 
@@ -43,10 +46,11 @@ private:
     std::vector<double> efield;
     std::vector<double> bfield;
 
-    std::string gas_path;
     double gas_pressure;
+    std::vector<std::string> gas_paths;
+    std::vector<double> gas_proportions;
 
-    std::vector<InputParameters> track_parameters;
+    std::vector<InputEvent> events;
 };
 
 

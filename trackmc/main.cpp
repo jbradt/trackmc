@@ -14,6 +14,7 @@
 #include "Exceptions.h"
 #include "Constants.h"
 #include "InputFile.h"
+#include "GasMixture.h"
 
 int main(int argc, const char * argv[]) {
     if (argc < 2) {
@@ -31,19 +32,19 @@ int main(int argc, const char * argv[]) {
         return 2;
     }
 
-    Gas gas(inputs.get_gas_pressure(), inputs.get_gas_path());
+    GasMixture gas(inputs.get_gas_pressure(), inputs.get_gas_paths(), inputs.get_gas_proportions());
 
     Vector3D ef {inputs.get_efield()};
     Vector3D bf {inputs.get_bfield()};
 
     TrackSimulator ts {gas, ef, bf};
 
-    for (const auto& track : inputs.get_track_parameters()) {
-        Particle proj {track.proj_mass, track.proj_charge, track.proj_energy, track.proj_position,
-                       track.proj_azimuth, track.proj_polar};
-        SimulatedTrack res = ts.track_particle(proj);
-        for (auto item : res.energy) {
-            std::cout << item << std::endl;
-        }
-    }
+//    for (const auto& track : inputs.get_events()) {
+//        Particle proj {track.mass, track.charge, track.energy, track.position,
+//                       track.azimuth, track.polar};
+//        SimulatedTrack res = ts.track_particle(proj);
+//        for (auto item : res.energy) {
+//            std::cout << item << std::endl;
+//        }
+//    }
 }

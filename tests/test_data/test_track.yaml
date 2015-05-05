@@ -4,22 +4,26 @@ fields:
     magnetic: [0, 0, 1]
 
 gas:
-    path: "gasdata/helium.dat"
     pressure: 760
+    components:
+      - path: "gasdata/helium.dat"
+        proportion: 0.9
+      - path: "gasdata/co2.dat"
+        proportion: 0.1
 
-tracks:
-  - projectile:
-        mass: 4
+events:
+  - particles:
+      - mass: 4
         charge: 2
         energy: 2  # per nucleon
+        final_energy: 1  # per nucleon
         position: [0, 0, 0]
         polar: 0.78
         azimuthal: 0
-    target:
-        mass: 4
+      - mass: 4
         charge: 2
-    vertex:
-        energy: 1
+        energy: 1  # per nucleon
+        position: [0, 0, 0.5]
+        polar: 0.12
+        azimuthal: 3.0
 ...
-
-
