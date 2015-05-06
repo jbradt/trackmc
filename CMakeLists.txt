@@ -27,8 +27,10 @@ include_directories(trackmc)
 
 find_library(LIBYAMLCPP NAMES libyaml-cpp.a PATHS /usr/local/lib)
 
+add_subdirectory(get-manip)
+
 add_executable(trackmc ${SOURCE_FILES} ${MAIN_FILE})
 add_executable(trackmc_tests ${SOURCE_FILES} ${TEST_FILES} ${TEST_MAIN_FILE})
 
-target_link_libraries(trackmc ${LIBYAMLCPP})
-target_link_libraries(trackmc_tests ${LIBYAMLCPP})
+target_link_libraries(trackmc ${LIBYAMLCPP} getevt)
+target_link_libraries(trackmc_tests ${LIBYAMLCPP} getevt)

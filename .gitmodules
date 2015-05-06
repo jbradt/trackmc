@@ -1,0 +1,3 @@
+[submodule "get-manip"]
+	path = get-manip
+	url = https://github.com/attpc/get-manip
