@@ -5,6 +5,7 @@
 #include "catch.hpp"
 #include "InputFile.h"
 #include <vector>
+#include <Constants.h>
 
 SCENARIO("An input file needs to be read")
 {
@@ -20,8 +21,10 @@ SCENARIO("An input file needs to be read")
             {
                 std::vector<double> ef_exp {0, 0, 15e3};
                 std::vector<double> bf_exp {0, 0, 1};
+                double tilt_exp {7 * Conversions::degrees};
                 REQUIRE(inputs.get_efield() == ef_exp);
                 REQUIRE(inputs.get_bfield() == bf_exp);
+                REQUIRE(inputs.get_tilt() == tilt_exp);
 
                 std::string path1 {"gasdata/helium.dat"};
                 std::string path2 {"gasdata/co2.dat"};

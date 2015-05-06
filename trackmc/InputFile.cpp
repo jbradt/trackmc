@@ -3,6 +3,7 @@
 //
 
 #include "InputFile.h"
+#include "Constants.h"
 
 InputFile::InputFile()
 {
@@ -17,6 +18,11 @@ const std::vector<double>& InputFile::get_efield() const
 const std::vector<double>& InputFile::get_bfield() const
 {
     return bfield;
+}
+
+const double InputFile::get_tilt() const
+{
+    return tilt;
 }
 
 const std::vector<std::string> InputFile::get_gas_paths() const
@@ -48,6 +54,14 @@ void InputFile::parse(const std::string filename)
 
     if (config["fields"]) {
         YAML::Node fields = config["fields"];
+
+        if (fields["tilt"]) {
+            tilt = fields["tilt"].as<double>() * Conversions::degrees;
+        }
+        else {
+            tilt = 0;
+        }
+
         if (fields["electric"]) {
             auto ef_in = fields["electric"].as<std::vector<double>>();
             assert(ef_in.size() == 3);

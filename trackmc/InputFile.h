@@ -35,6 +35,7 @@ public:
 
     const std::vector<double>& get_efield() const;
     const std::vector<double>& get_bfield() const;
+    const double get_tilt() const;
     const std::vector<std::string> get_gas_paths() const;
     const std::vector<double> get_gas_proportions() const;
     double get_gas_pressure() const;
@@ -45,6 +46,7 @@ public:
 private:
     std::vector<double> efield;
     std::vector<double> bfield;
+    double tilt;
 
     double gas_pressure;
     std::vector<std::string> gas_paths;
