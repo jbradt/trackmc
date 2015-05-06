@@ -10,7 +10,8 @@ set(SOURCE_FILES
     trackmc/Particle.cpp
     trackmc/Vector3D.cpp
     trackmc/TrackSimulator.cpp
-    trackmc/InputFile.cpp)
+    trackmc/InputFile.cpp
+    trackmc/EventGenerator.cpp)
 
 set(TEST_FILES
     tests/Particle_tests.cpp
@@ -18,7 +19,8 @@ set(TEST_FILES
     tests/Gas_tests.cpp
     tests/GasMixture_tests.cpp
     tests/TrackSimulator_tests.cpp
-    tests/InputFile_tests.cpp)
+    tests/InputFile_tests.cpp
+    tests/EventGenerator_tests.cpp)
 
 set(MAIN_FILE trackmc/main.cpp)
 set(TEST_MAIN_FILE tests/catch_main.cpp)
