@@ -11,7 +11,8 @@ set(SOURCE_FILES
     trackmc/Vector3D.cpp
     trackmc/TrackSimulator.cpp
     trackmc/InputFile.cpp
-    trackmc/EventGenerator.cpp)
+    trackmc/EventGenerator.cpp
+    trackmc/PadPlane.cpp)
 
 set(TEST_FILES
     tests/Particle_tests.cpp

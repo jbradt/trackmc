@@ -15,6 +15,8 @@
 #include "Constants.h"
 #include "InputFile.h"
 #include "GasMixture.h"
+#include "PadPlane.h"
+#include <chrono>
 
 int main(int argc, const char * argv[]) {
     if (argc < 2) {
@@ -38,6 +40,14 @@ int main(int argc, const char * argv[]) {
     Vector3D bf {inputs.get_bfield()};
 
     TrackSimulator ts {gas, ef, bf};
+
+    auto start2 = std::chrono::high_resolution_clock::now();
+    PadPlane pads2 {};
+    pads2.load_binary("./resources/pad_lookup.dat", 5600, 5600);  // TODO: Make this more flexible?
+    auto end2 = std::chrono::high_resolution_clock::now();
+
+    std::cout << "Read pads (bin) in " << std::chrono::duration_cast<std::chrono::milliseconds>(end2-start2).count() << " ms" << std::endl;
+
 
 //    for (const auto& track : inputs.get_events()) {
 //        Particle proj {track.mass, track.charge, track.energy, track.position,
