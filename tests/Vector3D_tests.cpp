@@ -100,6 +100,28 @@ SCENARIO("Vector3D class is working", "[vector3d]")
             }
         }
 
+        WHEN("they are assignment-added")
+        {
+            Vector3D sum = vec1 + vec2;
+            vec1 += vec2;
+
+            THEN("the one assigned to equals the sum")
+            {
+                REQUIRE(vec1 == sum);
+            }
+        }
+
+        WHEN("they are assignment-subtracted")
+        {
+            Vector3D diff = vec1 - vec2;
+            vec1 -= vec2;
+
+            THEN("the one assigned to equals the difference")
+            {
+                REQUIRE(vec1 == diff);
+            }
+        }
+
         WHEN("they are dotted together")
         {
             double dot = vec1.dot(vec2);
