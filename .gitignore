@@ -1,2 +1,4 @@
 workspace.xml
 tasks.xml
+build/*
+.ipynb_checkpoints
