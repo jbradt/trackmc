@@ -17,6 +17,7 @@
 class Vector3D
 {
 public:
+    Vector3D();
     Vector3D(const double x, const double y, const double z);
     Vector3D(const Vector3D& other);
     Vector3D(const std::vector<double>& svec);
@@ -25,6 +26,8 @@ public:
     Vector3D operator-(const Vector3D& other) const;
     Vector3D& operator+=(const Vector3D& other);
     Vector3D& operator-=(const Vector3D& other);
+
+    Vector3D operator-();
 
     Vector3D operator*(const double scalar) const;
     Vector3D operator/(const double scalar) const;

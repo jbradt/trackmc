@@ -9,6 +9,10 @@
 #include "Vector3D.h"
 #include "Exceptions.h"
 
+Vector3D::Vector3D()
+: x(0), y(0), z(0)
+{}
+
 Vector3D::Vector3D(const double x, const double y, const double z)
 : x(x), y(y), z(z)
 {}
@@ -59,6 +63,15 @@ Vector3D& Vector3D::operator-=(const Vector3D& other)
     y -= other.y;
     z -= other.z;
     return *this;
+}
+
+Vector3D Vector3D::operator-()
+{
+    Vector3D res {};
+    res.x = -x;
+    res.y = -y;
+    res.z = -z;
+    return res;
 }
 
 Vector3D Vector3D::operator*(const double scalar) const

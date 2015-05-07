@@ -55,6 +55,17 @@ SCENARIO("Vector3D class is working", "[vector3d]")
             }
         }
 
+        WHEN("the vector is negated")
+        {
+            Vector3D neg = -vec;
+
+            THEN("the components are negated")
+            {
+                REQUIRE(neg.x == -vec.x);
+                REQUIRE(neg.y == -vec.y);
+                REQUIRE(neg.z == -vec.z);
+            }
+        }
     }
 
     GIVEN("two unequal vectors")
