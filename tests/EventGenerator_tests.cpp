@@ -75,3 +75,45 @@ SCENARIO("Drift velocity vector must be calculated")
         }
     }
 }
+
+SCENARIO("Data needs to be calibrated")
+{
+    GIVEN("a data set and a vd vector")
+    {
+        std::vector<Vector3D> data;
+        for (int i = 0; i < 512; i++) {
+            data.push_back(Vector3D(0, 0, i));
+        }
+        double clock {10};
+        Vector3D vd {0, 0.5, 1};
+
+        WHEN("the data is calibrated")
+        {
+            THEN("the result is right")
+            {
+                for (auto& item : data) {
+                    Vector3D cal_item = EventGenerator::calibrate(item, vd, clock);
+                    CAPTURE(item);
+                    CAPTURE(cal_item);
+                    REQUIRE(cal_item.x == (item.x + -vd.x * item.z / clock * 10));
+                    REQUIRE(cal_item.y == (item.y + -vd.y * item.z / clock * 10));
+                    REQUIRE(cal_item.z == (-vd.z * item.z / clock * 10));
+                }
+            }
+        }
+
+        WHEN("the data set is calibrated and then uncalibrated")
+        {
+            THEN("the result is identical to the input")
+            {
+                for (auto& item : data) {
+                    Vector3D cal_item = EventGenerator::calibrate(item, vd, clock);
+                    Vector3D uncal_item = EventGenerator::uncalibrate(cal_item, vd, clock);
+                    CAPTURE(item);
+                    CAPTURE(cal_item);
+                    REQUIRE(uncal_item == item);
+                }
+            }
+        }
+    }
+}
